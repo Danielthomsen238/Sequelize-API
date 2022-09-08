@@ -17,10 +17,6 @@ constructor(){
     get = async (req, res) => {
         const result = await RoleModel.findOne({
             where: { id: req.params.id },
-            include: {
-                model: UserModel,
-                attributes: ['id', 'firstname']
-            }
         })
         res.json(result);
     }
