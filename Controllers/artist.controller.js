@@ -1,7 +1,6 @@
 import {Sequelize} from 'sequelize'
 import ArtistModel from "../Models/Artist.model.js"
 
-const Artist = new ArtistModel;
 
 class ArtistController {
 constructor(){

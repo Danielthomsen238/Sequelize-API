@@ -1,7 +1,6 @@
 import {Sequelize} from 'sequelize'
 import UserModel from "../Models/User.model.js"
 
-const User = new UserModel;
 
 class UserController {
 constructor(){
@@ -21,9 +20,9 @@ constructor(){
     }
 
     create = async (req,res) =>{
-        const { Firstname, Lastname, Email, Password} = req.body;
+        const { firstname, lastname, email, password, telefon, school_id} = req.body;
 
-        if(Firstname && Lastname && Email && Password){
+        if(firstname && lastname && email && password, telefon, school_id){
             const model = await UserModel.create(req.body);
             return res.json({newId: model.id});
         }else{
@@ -33,9 +32,9 @@ constructor(){
     }
 
     update = async (req,res) =>{
-        const { Firstname, Lastname, Email, Password} = req.body;
+        const { firstname, lastname, email, password} = req.body;
 
-        if(Firstname && Lastname && Email && Password){
+        if(firstname && lastname && email && password){
             const model = await UserModel.update(req.body,{
                 where: { id: req.params.id },
                 individualHooks: true
