@@ -1,11 +1,15 @@
 import express from 'express'
 import { sequelize } from '../Config/db.sequelize.js'
+import SchoolModel from '../Models/school.model.js'  
+import RoleModel from '../Models/role.model.js' 
+import UserModel from '../Models/user.model.js'
+import CourseModel from '../Models/course.model.js'
+import CategoryModel from "../Models/category.model.js" 
+
 
 const router = express.Router();
 
-import SongModel from '../Models/song.model.js'  
-import ArtistModel from '../Models/artist.model.js' 
-import UserModel from '../Models/user.model.js' 
+
 
 router.get('/init', (req,res) => {
     try{

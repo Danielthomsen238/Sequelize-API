@@ -8,7 +8,12 @@ constructor(){
 }
 
     list = async (req, res) => {
-        const result = await UserModel.findAll()
+        const result = await UserModel.findAll({
+            include: {
+                model: UserModel,
+                attributes: ['id', 'firstname']
+            }
+        })
         res.json(result)
     }
 

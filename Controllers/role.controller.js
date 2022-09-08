@@ -6,7 +6,7 @@ import RoleModel from "../Models/role.model.js"
 
 class RoleController {
 constructor(){
-    console.log("Instance call of User controller")
+    console.log("Instance call of role controller")
 }
 
     list = async (req, res) => {

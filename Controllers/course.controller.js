@@ -6,7 +6,7 @@ import CourseModel from "../Models/course.model.js"
 
 class CourseController {
 constructor(){
-    console.log("Instance call of User controller")
+    console.log("Instance call of Course controller")
 }
 
     list = async (req, res) => {

@@ -4,9 +4,10 @@ import CategoryModel from "../Models/Category.model.js"
 
 
 
+
 class CategoryController {
 constructor(){
-    console.log("Instance call of User controller")
+    console.log("Instance call of Category controller")
 }
 
     list = async (req, res) => {

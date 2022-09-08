@@ -3,12 +3,13 @@ import dotevn from 'dotenv'
 dotevn.config()
 
 const sequelize = new Sequelize(
-    process.env.Database,
-    process.env.User,
-    process.env.Password,
+    process.env.DB_NAME,
+    process.env.DB_USER,
+    process.env.DB_PASSWORD,
     {
-        host: process.env.Host,
-        dialect: 'mysql'
+        host: process.env.DB_HOST,
+        port: process.env.DB_PORT,
+        dialect: "mysql"
     }
 )
 

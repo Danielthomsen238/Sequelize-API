@@ -7,7 +7,7 @@ UserModel.belongsTo(SchoolModel)
 
 class SchoolController {
 constructor(){
-    console.log("Instance call of User controller")
+    console.log("Instance call of School controller")
 }
 
     list = async (req, res) => {
@@ -18,10 +18,7 @@ constructor(){
     get = async (req, res) => {
         const result = await SchoolModel.findOne({
             where: { id: req.params.id },
-            include: {
-                model: UserModel,
-                attributes: ['id', 'firstname']
-            }
+            
         })
         res.json(result);
     }
