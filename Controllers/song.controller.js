@@ -4,8 +4,6 @@ import ArtistModel from '../Models/Artist.model.js';
 import SongModel from "../Models/song.model.js"
 const Op = Sequelize.Op;
 
-const song = new SongModel;
-
 class SongController {
 constructor(){
     console.log("Instance call of song controller")
