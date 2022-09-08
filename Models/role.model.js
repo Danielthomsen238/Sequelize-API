@@ -10,14 +10,10 @@ RoleModel.init({
         allowNull: false,
         primaryKey: true
     },
-    admin: {
-        type: DataTypes.INTEGER,
+     role: {
+        type: DataTypes.CHAR,
         allowNull: false,
-    },
-    user:{
-        type: DataTypes.INTEGER,
-        allowNull: true,
-    }
+     }
 },{
     sequelize,
     modelName: 'role',
