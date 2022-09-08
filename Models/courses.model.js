@@ -3,7 +3,7 @@ import {DataTypes, Model} from 'sequelize'
 
 class CoursesModel extends Model {}
 
-UserModel.init({
+CoursesModel.init({
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
