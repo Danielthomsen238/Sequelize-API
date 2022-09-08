@@ -1,7 +1,7 @@
 import express from "express"
 const app = express();
 const PORT = process.env.PORT || 3123;
-import {router as SongRouter} from "./Routes/song.router.js"
+import {router as SchoolRouter} from "./Routes/school.router.js"
 import {router as ArtistRouter} from "./Routes/artist.router.js"
 import {router as InitRouter} from "./Routes/init.sequelize.router.js"
 import {router as UserRouter} from "./Routes/user.router.js"
@@ -32,7 +32,7 @@ app.use(function (req, res, next) {
 }); app.use(express.json({ limit: "1mb" }));
 
 app.use(InitRouter)
-app.use(SongRouter)
+app.use(SchoolRouter)
 app.use(ArtistRouter)
 app.use(UserRouter)
 app.use(AuthRouter)
