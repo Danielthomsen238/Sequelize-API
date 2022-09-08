@@ -1,8 +1,7 @@
 import {sequelize} from '../Config/db.sequelize.js'
 import {DataTypes, Model} from 'sequelize'
-import bcrypt from 'bcrypt'
 
-class UserModel extends Model {}
+class CoursesModel extends Model {}
 
 UserModel.init({
     id: {
@@ -11,66 +10,37 @@ UserModel.init({
         allowNull: false,
         primaryKey: true
     },
-    firstname: {
+    name: {
         type: DataTypes.CHAR,
         allowNull: false
     },
-    lastname: {
+    description: {
         type: DataTypes.CHAR,
         allowNull: false
     },
-    telefon: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
-    email: {
+    duration: {
         type: DataTypes.CHAR,
         allowNull: false
-    },
-    password: {
-        type: DataTypes.CHAR,
-        allowNull: false
-    },
-    active: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-        defaultValue: false
     },
     school_id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: false
     },
-    role_id: {
+    user_id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: false
+    },
+    category_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
     }
 },{
     sequelize,
-    modelName: 'user',
+    modelName: 'course',
     freezeTableName: true,
     underscored: false ,
     createdAt: true,
-    updatedAt: true,
-    hooks: {
-        beforeCreate: async (user, options) => {
-            user.Password = await createHash(user.Password)
-        },
-        beforeUpdate: async (user, options) => {
-            user.Password = await createHash(user.Password)
-        }
-    }
+    updatedAt: true
 })
 
-/**
- * Funktion that encrypts a string
- * @param {String} string 
- * @returns Hashed string
- */
-
-const createHash = async string => {
-    const salt = await bcrypt.genSalt(10);
-    const hashedString = await bcrypt.hash(string, salt);
-    return hashedString;
-}
-
-export default UserModel
+export default CoursesModel
