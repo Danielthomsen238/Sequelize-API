@@ -15,7 +15,7 @@ class AuthController{
         if(username && password){
             const data = await UserModel.findOne({
                 attributes:['id','Password'],
-                where: {Email: username}
+                where: {email: username}
             })
             console.log(data)
 

@@ -1,0 +1,84 @@
+import {Sequelize} from 'sequelize'
+import SchoolModel from "../Models/school.model.js"
+import UserModel from "../Models/user.model.js"
+
+SchoolModel.hasMany(UserModel)
+UserModel.belongsTo(SchoolModel)
+
+class SchoolController {
+constructor(){
+    console.log("Instance call of User controller")
+}
+
+    list = async (req, res) => {
+        const result = await SchoolModel.findAll()
+        res.json(result)
+    }
+
+    get = async (req, res) => {
+        const result = await SchoolModel.findOne({
+            where: { id: req.params.id },
+            include: {
+                model: UserModel,
+                attributes: ['id', 'firstname']
+            }
+        })
+        res.json(result);
+    }
+
+    create = async (req,res) =>{
+        const { name, address, zip, city, telefon, email, description, user_id, category_id} = req.body;
+
+        if(name && address && zip && city, telefon, email && description && user_id && category_id){
+            const model = await SchoolModel.create(req.body);
+            return res.json({newId: model.id});
+        }else{
+            res.send(418);
+        }
+
+    }
+
+    update = async (req,res) =>{
+        const { name, address, zip, city, telefon, email, description, user_id, category_id} = req.body;
+
+        if(name && address && zip && city, telefon, email && description && user_id && category_id){
+            const model = await SchoolModel.update(req.body,{
+                where: { id: req.params.id },
+                individualHooks: true
+            });
+            return res.json({status: true});
+        }else{
+            res.send(418);
+        }
+
+    }
+
+    delete = async (req, res) => {
+
+        try {
+
+            await SchoolModel.destroy({
+
+                where: {
+
+                    id: req.params.id
+
+                }
+
+            })
+
+            res.sendStatus(200)
+
+        } catch (error) {
+
+            res.send(error)
+
+           
+
+        }
+
+    }
+
+}
+
+export {SchoolController}
