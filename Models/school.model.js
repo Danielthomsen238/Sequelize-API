@@ -43,21 +43,12 @@ SchoolModel.init({
         type: DataTypes.CHAR,
         allowNull: true,
     },
-    user_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
-    category_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-
-    }
 
 },{
     sequelize,
     modelName: 'school',
     freezeTableName: true,
-    underscored: false ,
+    underscored: true ,
     createdAt: true,
     updatedAt: true
 })

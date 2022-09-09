@@ -1,7 +1,12 @@
 import {Sequelize} from 'sequelize'
 import CourseModel from "../Models/course.model.js"
+import SchoolModel from "../Models/school.model.js"
+import CategoryModel from "../models/category.model.js"
 
-
+SchoolModel.hasMany(CourseModel)
+CourseModel.belongsTo(SchoolModel)
+CategoryModel.hasMany(CourseModel)
+CourseModel.belongsTo(CategoryModel)
 
 
 class CourseController {

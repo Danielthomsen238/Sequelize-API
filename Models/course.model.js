@@ -26,10 +26,6 @@ CoursesModel.init({
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    user_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
     category_id: {
         type: DataTypes.INTEGER,
         allowNull: false
@@ -38,7 +34,7 @@ CoursesModel.init({
     sequelize,
     modelName: 'course',
     freezeTableName: true,
-    underscored: false ,
+    underscored: true ,
     createdAt: true,
     updatedAt: true
 })

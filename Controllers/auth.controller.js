@@ -14,14 +14,14 @@ class AuthController{
 
         if(username && password){
             const data = await UserModel.findOne({
-                attributes:['id','Password'],
+                attributes:['id','password'],
                 where: {email: username}
             })
             console.log(data)
 
             
 
-            bcrypt.compare(password, data.Password, (err,result) => {
+            bcrypt.compare(password, data.password, (err,result) => {
                 if(result){
                     const token = jwt.sign(data.id, process.env.PRIVATE_KEY)
                     return res.json({ token : token})

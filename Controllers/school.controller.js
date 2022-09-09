@@ -1,9 +1,8 @@
 import {Sequelize} from 'sequelize'
 import SchoolModel from "../Models/school.model.js"
-import UserModel from "../Models/user.model.js"
 
-SchoolModel.hasMany(UserModel)
-UserModel.belongsTo(SchoolModel)
+
+
 
 class SchoolController {
 constructor(){

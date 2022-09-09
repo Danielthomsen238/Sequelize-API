@@ -1,6 +1,12 @@
 import {Sequelize} from 'sequelize'
 import UserModel from "../Models/User.model.js"
+import SchoolModel from "../Models/school.model.js"
+import RoleModel from "../Models/role.model.js"
 
+SchoolModel.hasMany(UserModel)
+UserModel.belongsTo(SchoolModel)
+RoleModel.hasMany(UserModel)
+UserModel.belongsTo(RoleModel)
 
 class UserController {
 constructor(){
@@ -10,8 +16,8 @@ constructor(){
     list = async (req, res) => {
         const result = await UserModel.findAll({
             include: {
-                model: UserModel,
-                attributes: ['id', 'firstname']
+                model: SchoolModel,
+                attributes: ['id', 'name']
             }
         })
         res.json(result)
@@ -25,9 +31,9 @@ constructor(){
     }
 
     create = async (req,res) =>{
-        const { firstname, lastname, email, password, telefon, school_id} = req.body;
+        const { firstname, lastname, telefon, email, password, school_id} = req.body;
 
-        if(firstname && lastname && email && password, telefon, school_id){
+        if(firstname && lastname && email && password && telefon && school_id){
             const model = await UserModel.create(req.body);
             return res.json({newId: model.id});
         }else{
@@ -37,9 +43,9 @@ constructor(){
     }
 
     update = async (req,res) =>{
-        const { firstname, lastname, email, password} = req.body;
+        const { firstname, lastname, telefon, email, password, school_id} = req.body;
 
-        if(firstname && lastname && email && password){
+        if(firstname && lastname && email && password && telefon && school_id){
             const model = await UserModel.update(req.body,{
                 where: { id: req.params.id },
                 individualHooks: true

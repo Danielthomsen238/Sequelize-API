@@ -49,15 +49,15 @@ UserModel.init({
     sequelize,
     modelName: 'user',
     freezeTableName: true,
-    underscored: false ,
+    underscored: true ,
     createdAt: true,
     updatedAt: true,
     hooks: {
         beforeCreate: async (user, options) => {
-            user.Password = await createHash(user.Password)
+            user.password = await createHash(user.password)
         },
         beforeUpdate: async (user, options) => {
-            user.Password = await createHash(user.Password)
+            user.password = await createHash(user.password)
         }
     }
 })
