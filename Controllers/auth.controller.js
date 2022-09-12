@@ -2,28 +2,42 @@ import UserModel from '../Models/user.model.js'
 import dotevn from 'dotenv'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+import RoleModel from "../Models/role.model.js"
+
 dotevn.config()
+
+RoleModel.hasMany(UserModel)
+UserModel.belongsTo(RoleModel)
 
 class AuthController{
     constructor(){
         console.log("Running authentification")
     }
     login = async (req, res) => {
-        console.log(req.body);
+
         const {username, password} = req.body;
 
         if(username && password){
             const data = await UserModel.findOne({
-                attributes:['id','password'],
-                where: {email: username}
+                attributes:['id','password', 'firstname'],
+                where: {email: username},
+                include: {
+                    model: RoleModel,
+                    attributes: ['id', 'role']
+                },
             })
-            console.log(data)
-
-            
 
             bcrypt.compare(password, data.password, (err,result) => {
                 if(result){
-                    const token = jwt.sign(data.id, process.env.PRIVATE_KEY)
+                    const payload = {
+                        user_id: data.id,
+                        firstname: data.firstname,
+                        role_id: data.role.id,
+                        role: data.role.role
+
+                    }
+                    console.log(payload)
+                    const token = jwt.sign(payload, process.env.PRIVATE_KEY)
                     return res.json({ token : token})
                 }else{
                     res.sendStatus(401)
