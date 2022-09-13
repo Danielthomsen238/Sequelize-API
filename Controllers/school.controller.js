@@ -23,9 +23,9 @@ constructor(){
     }
 
     create = async (req,res) =>{
-        const { name, address, zip, city, telefon, email, description, user_id, category_id} = req.body;
+        const { name, address, zip, city, telefon, email, description, lat, lng} = req.body;
 
-        if(name && address && zip && city, telefon, email && description && user_id && category_id){
+        if(name && address && zip && city, telefon, email && description && lat && lng ){
             const model = await SchoolModel.create(req.body);
             return res.json({newId: model.id});
         }else{
