@@ -35,8 +35,16 @@ SchoolModel.init({
         type: DataTypes.CHAR,
         allowNull: false,
     },
-    desciption: {
+    description: {
         type: DataTypes.CHAR,
+        allowNull: false,
+    },
+    lat: {
+        type: DataTypes.DOUBLE,
+        allowNull: false,
+    },
+    lng: {
+        type: DataTypes.DOUBLE,
         allowNull: false,
     },
     image: {

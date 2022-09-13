@@ -33,11 +33,11 @@ constructor(){
     create = async (req,res) =>{
         const { firstname, lastname, telefon, email, password, school_id} = req.body;
 
-        if(firstname && lastname && email && password && telefon && school_id){
+        if(firstname && lastname && telefon && email && password && school_id){
             const model = await UserModel.create(req.body);
             return res.json({newId: model.id});
         }else{
-            res.send(418);
+            res.sendStatus(418);
         }
 
     }
@@ -45,7 +45,7 @@ constructor(){
     update = async (req,res) =>{
         const { firstname, lastname, telefon, email, password, school_id} = req.body;
 
-        if(firstname && lastname && email && password && telefon && school_id){
+        if(firstname && lastname && telefon && email && password && school_id){
             const model = await UserModel.update(req.body,{
                 where: { id: req.params.id },
                 individualHooks: true

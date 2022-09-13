@@ -43,7 +43,7 @@ UserModel.init({
     role_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        defaultValue: 0
+        defaultValue: 2
     }
 },{
     sequelize,
