@@ -1,7 +1,7 @@
 
 const express = require("express")
 const { AuthController } = require('../Controllers/Auth.controller.js') 
-const verifyToken = require('../Middleware/verifyToken.js' )
+const {verifyToken} = require('../Middleware/verifyToken.js') 
 
 const controller = new AuthController();
 

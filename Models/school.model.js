@@ -1,6 +1,6 @@
 const { sequelize } = require('../Config/db.sequelize.js') 
 const DataTypes = require('sequelize')
-const Model = require('sequelize')
+const {Model} = require('sequelize')
 
 class SchoolModel extends Model {}
 
@@ -62,4 +62,4 @@ SchoolModel.init({
     updatedAt: true
 })
 
-export default SchoolModel
+module.exports = SchoolModel

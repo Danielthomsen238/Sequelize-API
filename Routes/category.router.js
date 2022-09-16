@@ -1,6 +1,6 @@
 const express = require("express")
 const { CategoryController } = require('../Controllers/category.controller.js') 
-const verifyToken = require('../Middleware/verifyToken.js')
+const {verifyToken} = require('../Middleware/verifyToken.js') 
 
 const controller = new CategoryController();
 

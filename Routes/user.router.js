@@ -1,6 +1,6 @@
 const express = require("express")
 const { UserController } = require('../Controllers/User.controller.js') 
-const verifyToken = require('../Middleware/verifyToken.js') 
+const {verifyToken} = require('../Middleware/verifyToken.js') 
 
 const controller = new UserController();
 

@@ -1,6 +1,6 @@
 const { sequelize } = require('../Config/db.sequelize.js') 
 const DataTypes = require('sequelize')
-const Model = require('sequelize')
+const {Model} = require('sequelize')
 
 class RoleModel extends Model {}
 
@@ -24,4 +24,4 @@ RoleModel.init({
     updatedAt: false
 })
 
-export default RoleModel
+module.exports = RoleModel
