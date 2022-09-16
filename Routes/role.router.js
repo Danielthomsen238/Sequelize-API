@@ -1,7 +1,7 @@
 
 const express = require("express")
 const { RoleController } = require('../Controllers/role.controller.js') 
-const verifyToken = require('../Middleware/verifyToken.js') 
+const {verifyToken} = require('../Middleware/verifyToken.js') 
 
 const controller = new RoleController();
 

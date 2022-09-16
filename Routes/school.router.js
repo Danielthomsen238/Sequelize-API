@@ -1,6 +1,6 @@
 const express = require("express")
 const { SchoolController } = require('../Controllers/school.controller.js') 
-const verifyToken = require('../Middleware/verifyToken.js') 
+const {verifyToken} = require('../Middleware/verifyToken.js') 
 
 const controller = new SchoolController();
 
