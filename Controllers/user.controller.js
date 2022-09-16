@@ -15,6 +15,7 @@ constructor(){
 
     list = async (req, res) => {
         const result = await UserModel.findAll({
+            attributes:['id', 'firstname', "lastname", "telefon", "email", "active", "role_id" ],
             include: {
                 model: SchoolModel,
                 attributes: ['id', 'name']
@@ -24,8 +25,15 @@ constructor(){
     }
 
     get = async (req, res) => {
-        const result = await UserModel.findOne({
-            where: { id: req.params.id }
+        const result = await UserModel.findOne(
+            {
+            attributes:['id', 'firstname', "lastname", "telefon", "email", "active", "role_id" ],
+            where: { id: req.params.id },
+            include: {
+                model: SchoolModel,
+                attributes: ['id', 'name']
+            }
+            
         })
         res.json(result);
     }
@@ -43,9 +51,9 @@ constructor(){
     }
 
     update = async (req,res) =>{
-        const { firstname, lastname, telefon, email, password, school_id} = req.body;
+        const { firstname, lastname, telefon, email, } = req.body;
 
-        if(firstname && lastname && telefon && email && password && school_id){
+        if(firstname && lastname && telefon && email ){
             const model = await UserModel.update(req.body,{
                 where: { id: req.params.id },
                 individualHooks: true

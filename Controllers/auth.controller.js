@@ -16,7 +16,7 @@ class AuthController{
     login = async (req, res) => {
 
         const {username, password} = req.body;
-
+        
         if(username && password){
             const data = await UserModel.findOne({
                 attributes:['id','password', 'firstname'],
@@ -26,23 +26,25 @@ class AuthController{
                     attributes: ['id', 'role']
                 },
             })
+           if(data === null){
+            return res.sendStatus(404)
+           }
+           bcrypt.compare(password, data.password, (err,result) => {
+            if(result){
+                const payload = {
+                    user_id: data.id,
+                    firstname: data.firstname,
+                    role_id: data.role.id,
+                    role: data.role.role
 
-            bcrypt.compare(password, data.password, (err,result) => {
-                if(result){
-                    const payload = {
-                        user_id: data.id,
-                        firstname: data.firstname,
-                        role_id: data.role.id,
-                        role: data.role.role
-
-                    }
-                    console.log(payload)
-                    const token = jwt.sign(payload, process.env.PRIVATE_KEY)
-                    return res.json({ token : token})
-                }else{
-                    res.sendStatus(401)
                 }
-            })
+                console.log(payload)
+                const token = jwt.sign(payload, process.env.PRIVATE_KEY)
+                return res.json({ token : token})
+            }else{
+                res.sendStatus(401)
+            }
+        })
         }else{
             res.sendStatus(418)
         }

@@ -7,6 +7,7 @@ const verifyToken = (req, res, next) =>{
         const bearerHeader = req.headers['authorization']
         if(typeof bearerHeader !== 'undefined'){
             const requestToken = bearerHeader.split(' ')[1]
+            console.log(requestToken)
             jwt.verify(requestToken, process.env.PRIVATE_KEY, (err, data) =>{
                 if(!err){
                     next()
