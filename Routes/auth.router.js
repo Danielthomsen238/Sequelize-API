@@ -1,13 +1,14 @@
-import express from "express";
-import { AuthController } from '../Controllers/Auth.controller.js'
-import verifyToken from '../Middleware/verifyToken.js' 
+
+const express = require("express")
+const { AuthController } = require('../Controllers/Auth.controller.js') 
+const verifyToken = require('../Middleware/verifyToken.js' )
 
 const controller = new AuthController();
 
-const router = express.Router()
+const AuthRouter = express.Router()
 
-router.post('/Login', (req, res) => {controller.login(req,res)})
-router.post('/Protected', verifyToken , (req, res) => {controller.protected(req,res)})
+AuthRouter.post('/Login', (req, res) => {controller.login(req,res)})
+AuthRouter.post('/Protected', verifyToken , (req, res) => {controller.protected(req,res)})
 
 
-export { router }
+module.exports = { AuthRouter }

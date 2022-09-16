@@ -1,5 +1,4 @@
-import {Sequelize} from 'sequelize'
-import SchoolModel from "../Models/school.model.js"
+const SchoolModel = require("../Models/school.model.js")
 
 
 
@@ -77,4 +76,4 @@ constructor(){
 
 }
 
-export {SchoolController}
+module.exports = {SchoolController}

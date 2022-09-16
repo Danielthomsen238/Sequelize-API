@@ -1,18 +1,19 @@
-import express from "express";
-import { SchoolController } from '../Controllers/school.controller.js'
+const express = require("express")
+const { SchoolController } = require('../Controllers/school.controller.js') 
+const verifyToken = require('../Middleware/verifyToken.js') 
 
 const controller = new SchoolController();
 
-const router = express.Router()
+const SchoolRouter = express.Router()
 
-router.get('/school', (req, res) => {controller.list(req,res)})
-router.get('/school/:id[0-9]*', (req, res) => {controller.get(req,res)})
-router.post('/school', (req, res) => {controller.create(req,res)})
-router.put('/school/:id([0-9]*)', (req, res) => {
+SchoolRouter.get('/school', (req, res) => {controller.list(req,res)})
+SchoolRouter.get('/school/:id[0-9]*', (req, res) => {controller.get(req,res)})
+SchoolRouter.post('/school', (req, res) => {controller.create(req,res)})
+SchoolRouter.put('/school/:id([0-9]*)', (req, res) => {
     controller.update(req,res)
  })
-router.delete('/school/:id([0-9]*)', (req, res) => {
+ SchoolRouter.delete('/school/:id([0-9]*)', (req, res) => {
     controller.delete(req,res)
  })
 
-export { router }
+module.exports = { SchoolRouter }

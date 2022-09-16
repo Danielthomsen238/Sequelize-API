@@ -1,7 +1,4 @@
-import {Sequelize} from 'sequelize'
-import CategoryModel from "../Models/Category.model.js"
-
-
+const CategoryModel = require("../Models/Category.model.js")
 
 
 
@@ -77,4 +74,4 @@ constructor(){
 
 }
 
-export {CategoryController}
+module.exports = {CategoryController}

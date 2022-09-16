@@ -1,7 +1,6 @@
-import {Sequelize} from 'sequelize'
-import CourseModel from "../Models/course.model.js"
-import SchoolModel from "../Models/school.model.js"
-import CategoryModel from "../models/category.model.js"
+const CourseModel = require("../Models/course.model.js")
+const SchoolModel = require("../Models/school.model.js")
+const CategoryModel = require("../models/category.model.js")
 
 SchoolModel.hasMany(CourseModel)
 CourseModel.belongsTo(SchoolModel)
@@ -81,4 +80,4 @@ constructor(){
 
 }
 
-export {CourseController}
+module.exports = {CourseController}

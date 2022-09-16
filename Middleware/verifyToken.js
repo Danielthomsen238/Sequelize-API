@@ -1,6 +1,6 @@
-import jwt from 'jsonwebtoken'
-import dotenv from 'dotenv'  
-import { request } from 'express'
+const jwt = require('jsonwebtoken')
+const dotenv = require('dotenv')
+
 dotenv.config()
 
 const verifyToken = (req, res, next) =>{
@@ -20,4 +20,4 @@ const verifyToken = (req, res, next) =>{
         }
     
 }
-export default verifyToken;
+module.exports = { verifyToken };

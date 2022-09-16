@@ -1,7 +1,6 @@
-import {Sequelize} from 'sequelize'
-import UserModel from "../Models/User.model.js"
-import SchoolModel from "../Models/school.model.js"
-import RoleModel from "../Models/role.model.js"
+const UserModel = require("../Models/User.model.js")
+const SchoolModel = require("../Models/school.model.js")
+const RoleModel = require("../Models/role.model.js")
 
 SchoolModel.hasMany(UserModel)
 UserModel.belongsTo(SchoolModel)
@@ -93,4 +92,4 @@ constructor(){
 
 }
 
-export {UserController}
+module.exports = {UserController}

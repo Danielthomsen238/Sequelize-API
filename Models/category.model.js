@@ -1,11 +1,12 @@
-import {sequelize} from '../Config/db.sequelize.js'
-import {DataTypes, Model} from 'sequelize'
+const { sequelize } = require('../Config/db.sequelize.js') 
+const DataTypes = require('sequelize')
+const Model = require('sequelize')
 
 class CategorysModel extends Model {}
 
 CategorysModel.init({
     id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.CHAR,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
@@ -24,4 +25,4 @@ CategorysModel.init({
     updatedAt: true
 })
 
-export default CategorysModel
+module.exports = CategorysModel

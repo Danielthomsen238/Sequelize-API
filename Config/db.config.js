@@ -1,5 +1,6 @@
-import mysql from "mysql"
-import dotenv from "dotenv"
+const mysql = require('mysql')
+const dotenv = require('dotenv')
+
 dotenv.config();
 
 let db = mysql.createConnection({
@@ -12,4 +13,4 @@ let db = mysql.createConnection({
 
 db.connect()
 
-export default db
+module.exports = { db }

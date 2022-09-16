@@ -1,13 +1,14 @@
-import express from "express"
+const express = require("express")
 const app = express();
 const PORT = process.env.PORT || 3123;
-import {router as SchoolRouter} from "./Routes/school.router.js"
-import {router as CourseRouter} from "./Routes/course.router.js"
-import {router as RoleRouter} from "./Routes/role.router.js"
-import {router as CategoryRouter} from "./Routes/category.router.js"
-import {router as InitRouter} from "./Routes/init.sequelize.router.js"
-import {router as UserRouter} from "./Routes/user.router.js"
-import {router as AuthRouter} from "./Routes/auth.router.js"
+
+const { RoleRouter } = require("./Routes/role.router.js")
+const { CourseRouter } = require("./Routes/course.router.js")
+const { CategoryRouter } = require("./Routes/category.router.js")
+const { SchoolRouter } = require("./Routes/school.router.js")
+const { InitRouter } = require("./Routes/init.sequelize.router.js")
+const { UserRouter } = require("./Routes/user.router.js")
+const { AuthRouter } = require("./Routes/auth.router.js")
 
 
 
@@ -48,3 +49,5 @@ app.use(CategoryRouter)
 app.listen(PORT, () => {
     console.log(`Listening on the port ${PORT}.`);
 });
+
+module.exports = app

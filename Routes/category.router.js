@@ -1,18 +1,19 @@
-import express from "express";
-import { CategoryController } from '../Controllers/category.controller.js'
+const express = require("express")
+const { CategoryController } = require('../Controllers/category.controller.js') 
+const verifyToken = require('../Middleware/verifyToken.js')
 
 const controller = new CategoryController();
 
-const router = express.Router()
+const CategoryRouter = express.Router()
 
-router.get('/category', (req, res) => {controller.list(req,res)})
-router.get('/category/:id[0-9]*', (req, res) => {controller.get(req,res)})
-router.post('/category', (req, res) => {controller.create(req,res)})
-router.put('/category/:id([0-9]*)', (req, res) => {
+CategoryRouter.get('/category', (req, res) => {controller.list(req,res)})
+CategoryRouter.get('/category/:id[0-9]*', (req, res) => {controller.get(req,res)})
+CategoryRouter.post('/category', (req, res) => {controller.create(req,res)})
+CategoryRouter.put('/category/:id([0-9]*)', (req, res) => {
     controller.update(req,res)
  })
-router.delete('/category/:id([0-9]*)', (req, res) => {
+ CategoryRouter.delete('/category/:id([0-9]*)', (req, res) => {
     controller.delete(req,res)
  })
 
-export { router }
+module.exports = { CategoryRouter }

@@ -1,5 +1,5 @@
-import {Sequelize} from 'sequelize'
-import RoleModel from "../Models/role.model.js"
+const RoleModel = require("../Models/role.model.js")
+
 
 
 
@@ -76,4 +76,4 @@ constructor(){
 
 }
 
-export {RoleController}
+module.exports = {RoleController}

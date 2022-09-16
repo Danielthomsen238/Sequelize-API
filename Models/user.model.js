@@ -1,6 +1,6 @@
-import {sequelize} from '../Config/db.sequelize.js'
-import {DataTypes, Model} from 'sequelize'
-import bcrypt from 'bcrypt'
+const { sequelize } = require('../Config/db.sequelize.js') 
+const DataTypes = require('sequelize')
+const Model = require('sequelize')
 
 class UserModel extends Model {}
 

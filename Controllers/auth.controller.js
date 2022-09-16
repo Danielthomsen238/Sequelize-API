@@ -1,10 +1,11 @@
-import UserModel from '../Models/user.model.js'
-import dotevn from 'dotenv'
-import bcrypt from 'bcrypt'
-import jwt from 'jsonwebtoken'
-import RoleModel from "../Models/role.model.js"
+const UserModel = require('../Models/user.model.js')
+const dotenv = require('dotenv')
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+const RoleModel = require("../Models/role.model.js")
 
-dotevn.config()
+
+dotenv.config()
 
 RoleModel.hasMany(UserModel)
 UserModel.belongsTo(RoleModel)
@@ -56,4 +57,4 @@ class AuthController{
     }
 }
 
-export {AuthController}
+module.exports = {AuthController}
