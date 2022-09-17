@@ -1,6 +1,6 @@
-const UserModel = require("../Models/User.model.js")
-const SchoolModel = require("../Models/School.model.js")
-const RoleModel = require("../Models/Role.model.js")
+const UserModel = require("../Models/user.model.js")
+const SchoolModel = require("../Models/school.model.js")
+const RoleModel = require("../Models/role.model.js")
 
 SchoolModel.hasMany(UserModel)
 UserModel.belongsTo(SchoolModel)

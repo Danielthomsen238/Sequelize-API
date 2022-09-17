@@ -1,4 +1,4 @@
-const CategoryModel = require("../Models/Category.model.js")
+const CategoryModel = require("../Models/category.model.js")
 
 
 
