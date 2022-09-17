@@ -15,10 +15,10 @@
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
-    "sequelize": "^6.21.4"
+    "sequelize": "^6.21.4",
+    "vercel": "^28.2.5"
   },
   "devDependencies": {
-    "nodemon": "^2.0.20",
-    "webpack-node-externals": "^3.0.0"
+    "nodemon": "^2.0.20"
   }
 }
