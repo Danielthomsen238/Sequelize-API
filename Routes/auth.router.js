@@ -11,4 +11,4 @@ AuthRouter.post('/Login', (req, res) => {controller.login(req,res)})
 AuthRouter.post('/Protected', verifyToken , (req, res) => {controller.protected(req,res)})
 
 
-module.exports = { AuthRouter }
+module.exports = { AuthRouter } 
