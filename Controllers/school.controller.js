@@ -1,4 +1,4 @@
-const SchoolModel = require("../Models/school.model.js")
+const SchoolModel = require("../Models/School.model.js")
 
 
 

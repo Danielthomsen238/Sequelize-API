@@ -1,4 +1,4 @@
-const RoleModel = require("../Models/role.model.js")
+const RoleModel = require("../Models/Role.model.js")
 
 
 

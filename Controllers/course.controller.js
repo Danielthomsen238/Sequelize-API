@@ -1,6 +1,6 @@
-const CourseModel = require("../Models/course.model.js")
-const SchoolModel = require("../Models/school.model.js")
-const CategoryModel = require("../models/category.model.js")
+const CourseModel = require("../Models/Course.model.js")
+const SchoolModel = require("../Models/School.model.js")
+const CategoryModel = require("../Models/Category.model.js")
 
 SchoolModel.hasMany(CourseModel)
 CourseModel.belongsTo(SchoolModel)
