@@ -54,7 +54,7 @@ constructor(){
 
         if(firstname && lastname && telefon && email, role_id && active ){
             const model = await UserModel.update(req.body,{
-                where: { id: req.params.id },
+                where: { id: req.body.id },
                 individualHooks: true
             });
             return res.json({status: true});
