@@ -46,7 +46,7 @@ class AuthController{
                     role_id: data.role.id,
                     role: data.role.role,
                     school_id: data.school.id,
-                    School_name: data.school.name
+                    school_name: data.school.name
 
                 }
                 console.log(payload)
