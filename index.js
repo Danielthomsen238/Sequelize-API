@@ -6,7 +6,7 @@ const { RoleRouter } = require("./Routes/role.router.js")
 const { CourseRouter } = require("./Routes/course.router.js")
 const { CategoryRouter } = require("./Routes/category.router.js")
 const { SchoolRouter } = require("./Routes/school.router.js")
-const { InitRouter } = require("./Routes/init.sequelize.router.js")
+//const { InitRouter } = require("./Routes/init.sequelize.router.js")
 const { UserRouter } = require("./Routes/user.router.js")
 const { AuthRouter } = require("./Routes/auth.router.js")
 
@@ -34,7 +34,7 @@ app.use(function (req, res, next) {
     next();
 }); app.use(express.json({ limit: "1mb" }));
 
-app.use(InitRouter)
+//app.use(InitRouter)
 app.use(SchoolRouter)
 app.use(RoleRouter)
 app.use(UserRouter)

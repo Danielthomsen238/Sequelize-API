@@ -9,11 +9,11 @@ const RoleRouter = express.Router()
 
 RoleRouter.get('/role', (req, res) => {controller.list(req,res)})
 RoleRouter.get('/role/:id[0-9]*', (req, res) => {controller.get(req,res)})
-RoleRouter.post('/role', (req, res) => {controller.create(req,res)})
-RoleRouter.put('/role/:id([0-9]*)', (req, res) => {
+RoleRouter.post('/role', verifyToken, (req, res) => {controller.create(req,res)})
+RoleRouter.put('/role/:id([0-9]*)', verifyToken, (req, res) => {
     controller.update(req,res)
  })
- RoleRouter.delete('/role/:id([0-9]*)', (req, res) => {
+ RoleRouter.delete('/role/:id([0-9]*)', verifyToken,(req, res) => {
     controller.delete(req,res)
  })
 

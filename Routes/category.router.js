@@ -8,11 +8,11 @@ const CategoryRouter = express.Router()
 
 CategoryRouter.get('/category', (req, res) => {controller.list(req,res)})
 CategoryRouter.get('/category/:id[0-9]*', (req, res) => {controller.get(req,res)})
-CategoryRouter.post('/category', (req, res) => {controller.create(req,res)})
-CategoryRouter.put('/category/:id([0-9]*)', (req, res) => {
+CategoryRouter.post('/category', verifyToken, (req, res) => {controller.create(req,res)})
+CategoryRouter.put('/category/:id([0-9]*)', verifyToken, (req, res) => {
     controller.update(req,res)
  })
- CategoryRouter.delete('/category/:id([0-9]*)', (req, res) => {
+ CategoryRouter.delete('/category/:id([0-9]*)', verifyToken, (req, res) => {
     controller.delete(req,res)
  })
 
