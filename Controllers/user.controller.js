@@ -50,9 +50,9 @@ constructor(){
     }
 
     update = async (req,res) =>{
-        const { firstname, lastname, telefon, email, } = req.body;
+        const { firstname, lastname, telefon, email, role_id, active } = req.body;
 
-        if(firstname && lastname && telefon && email ){
+        if(firstname && lastname && telefon && email, role_id && active ){
             const model = await UserModel.update(req.body,{
                 where: { id: req.params.id },
                 individualHooks: true
