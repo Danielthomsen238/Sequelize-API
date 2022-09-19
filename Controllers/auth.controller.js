@@ -3,12 +3,16 @@ const dotenv = require('dotenv')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const RoleModel = require("../Models/role.model.js")
+const SchoolModel = require("../Models/school.model.js")
+
 
 
 dotenv.config()
 
 RoleModel.hasMany(UserModel)
 UserModel.belongsTo(RoleModel)
+SchoolModel.hasMany(UserModel)
+UserModel.belongsTo(SchoolModel)
 
 class AuthController{
     constructor(){
@@ -24,8 +28,12 @@ class AuthController{
                 where: {email: username},
                 include: {
                     model: RoleModel,
-                    attributes: ['id', 'role']
+                    attributes: ['id', 'role'],
                 },
+                include: {
+                    model: SchoolModel,
+                    attributes: ['id', 'name']
+                }
             })
            if(data === null){
             return res.sendStatus(404)
@@ -36,7 +44,9 @@ class AuthController{
                     user_id: data.id,
                     firstname: data.firstname,
                     role_id: data.role.id,
-                    role: data.role.role
+                    role: data.role.role,
+                    school_id: data.school.id,
+                    School_name: data.school.name
 
                 }
                 console.log(payload)
