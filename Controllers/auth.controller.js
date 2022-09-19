@@ -26,14 +26,15 @@ class AuthController{
             const data = await UserModel.findOne({
                 attributes:['id','password', 'firstname'],
                 where: {email: username},
-                include: {
+                include: [{
                     model: RoleModel,
                     attributes: ['id', 'role'],
                 },
-                include: {
+                {
                     model: SchoolModel,
                     attributes: ['id', 'name']
                 }
+            ],
             })
            if(data === null){
             return res.sendStatus(404)
