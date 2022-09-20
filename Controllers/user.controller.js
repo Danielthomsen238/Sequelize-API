@@ -64,9 +64,9 @@ class UserController {
   };
 
   update = async (req, res) => {
-    const { firstname, lastname, telefon, email, role_id, active } = req.body;
+    const { firstname, lastname, telefon, email, role_id } = req.body;
 
-    if ((firstname && lastname && telefon && email, role_id && active)) {
+    if ((firstname && lastname && telefon && email, role_id)) {
       const model = await UserModel.update(req.body, {
         where: { id: req.body.id },
         individualHooks: true,
