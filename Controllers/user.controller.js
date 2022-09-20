@@ -79,6 +79,7 @@ class UserController {
 
   delete = async (req, res) => {
     const { id } = req.body;
+    console.log(req.body);
     if (id) {
       try {
         await UserModel.destroy({
