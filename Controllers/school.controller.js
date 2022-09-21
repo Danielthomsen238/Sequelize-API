@@ -47,9 +47,15 @@ class SchoolController {
     } = req.body;
 
     if (
-      (name && address && zip && city,
-      telefon,
-      email && description && user_id && category_id)
+      name &&
+      address &&
+      zip &&
+      city &&
+      telefon &&
+      email &&
+      description &&
+      user_id &&
+      category_id
     ) {
       const model = await SchoolModel.update(req.body, {
         where: { id: req.body.id },
