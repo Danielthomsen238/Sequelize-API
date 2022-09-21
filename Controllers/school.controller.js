@@ -34,27 +34,9 @@ class SchoolController {
   };
 
   update = async (req, res) => {
-    const {
-      name,
-      address,
-      zip,
-      city,
-      telefon,
-      email,
-      description,
-      category_id,
-    } = req.body;
+    const { name, address, zip, city, telefon, email, description } = req.body;
 
-    if (
-      name &&
-      address &&
-      zip &&
-      city &&
-      telefon &&
-      email &&
-      description &&
-      category_id
-    ) {
+    if (name && address && zip && city && telefon && email && description) {
       const model = await SchoolModel.update(req.body, {
         where: { id: req.body.id },
         individualHooks: true,
