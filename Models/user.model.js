@@ -109,8 +109,8 @@ const sendEmail = async (user_email, password) => {
     host: "smtp-relay.sendinblue.com",
     port: 587,
     auth: {
-      user: "danielthomsen238@gmail.com",
-      pass: "pLUwjIW9D1BVmdz4",
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASSWORD,
     },
   });
   const mailOptions = {
