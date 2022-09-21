@@ -2,6 +2,7 @@ const { sequelize } = require("../Config/db.sequelize.js");
 const { DataTypes } = require("sequelize");
 const { Model } = require("sequelize");
 const bcrypt = require("bcrypt");
+const emailjs = require("emailjs-com");
 const generator = require("generate-password");
 
 class UserModel extends Model {}
@@ -69,7 +70,7 @@ UserModel.init(
       beforeUpdate: async (user, options) => {
         if (user.otp === true) {
           const generatePassword = OTP();
-          console.log(generatePassword);
+          sendEmail(user.email, generatePassword);
           user.otp = await createHash(generatePassword);
           return;
         }
@@ -102,5 +103,21 @@ const OTP = () => {
     strict: true,
   });
   return password;
+};
+const sendEmail = async (user_email, password) => {
+  const data = {
+    user_email,
+    password,
+  };
+  emailjs
+    .send(`service_ix4m3zi`, `template_64y4mcd`, data, `qgJ7Ycqdm2BsAqhH7`)
+    .then(
+      function (response) {
+        console.log("SUCCESS!", response.status, response.text);
+      },
+      function (error) {
+        console.log("FAILED...", error);
+      }
+    );
 };
 module.exports = UserModel;
