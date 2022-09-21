@@ -84,7 +84,7 @@ class AuthController {
       where: { id: data.id },
       individualHooks: true,
     });
-    return res.json({ status: true, message: data.otp });
+    return res.json({ status: true, message: data });
   };
 }
 
