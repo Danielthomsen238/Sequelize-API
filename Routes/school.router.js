@@ -18,7 +18,7 @@ SchoolRouter.post("/school", (req, res) => {
 SchoolRouter.put("/school", verifyToken, (req, res) => {
   controller.update(req, res);
 });
-SchoolRouter.delete("/school/:id([0-9]*)", verifyToken, (req, res) => {
+SchoolRouter.delete("/school", verifyToken, (req, res) => {
   controller.delete(req, res);
 });
 
