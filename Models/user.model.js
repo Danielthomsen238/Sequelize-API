@@ -2,6 +2,7 @@ const { sequelize } = require("../Config/db.sequelize.js");
 const { DataTypes } = require("sequelize");
 const { Model } = require("sequelize");
 const bcrypt = require("bcrypt");
+const generator = require("generate-password");
 
 class UserModel extends Model {}
 
@@ -66,15 +67,16 @@ UserModel.init(
       },
 
       beforeUpdate: async (user, options) => {
-        if (user.password === null) {
-          console.log(user);
-          if (user.otp) {
-            user.password = await createHash(user.password);
-            return;
-          }
+        if (user.otp === true) {
+          const generatePassword = OTP();
+          console.log(generatePassword);
+          user.otp = await createHash(generatePassword);
           return;
         }
-        user.otp = await createHash(user.otp);
+        if (user.password === null) {
+          return;
+        }
+        user.password = await createHash(user.password);
       },
     },
   }
@@ -91,5 +93,14 @@ const createHash = async (string) => {
   const hashedString = await bcrypt.hash(string, salt);
   return hashedString;
 };
-
+const OTP = () => {
+  const password = generator.generate({
+    length: 10,
+    numbers: true,
+    uppercase: true,
+    lowercase: true,
+    strict: true,
+  });
+  return password;
+};
 module.exports = UserModel;

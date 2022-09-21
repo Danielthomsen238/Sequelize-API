@@ -22,7 +22,7 @@ class AuthController {
 
     if (username && password) {
       const data = await UserModel.findOne({
-        attributes: ["id", "firstname"],
+        attributes: ["id", "firstname", "password"],
         where: { email: username },
         include: [
           {
@@ -72,19 +72,12 @@ class AuthController {
     if (data === null) {
       return res.sendStatus(404);
     }
-    const password = generator.generate({
-      length: 10,
-      numbers: true,
-      uppercase: true,
-      lowercase: true,
-      strict: true,
-    });
-    data.otp = password;
-    const model = await UserModel.update(data, {
+    req.body.otp = true;
+    const model = await UserModel.update(req.body, {
       where: { id: data.id },
       individualHooks: true,
     });
-    return res.json({ status: true, message: data });
+    return res.json({ status: true, message: req.body });
   };
 }
 
