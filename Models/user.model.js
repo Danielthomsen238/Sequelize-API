@@ -117,7 +117,7 @@ const sendEmail = async (user_email, password) => {
     from: "danielthomsen238@gmail.com", // sender address
     to: `${user_email}`, // list of receivers
     subject: "Engangs kode til Admin-dashboard", // Subject line
-    html: `<p>Her er en engangs kode til Admin-dashboard.</p><p> Du kan kun logge ind en gang så husk at ændre din kode</p><p>${password}</p> `, // plain text body
+    html: `<p>Her er en engangs kode til Admin-dashboard.</p><p> Du kan kun logge ind en gang så husk at ændre din kode.</p><p>${password}</p> `, // plain text body
   };
   transporter.sendMail(mailOptions, function (err, info) {
     if (err) console.log(err);
