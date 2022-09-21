@@ -2,7 +2,7 @@ const { sequelize } = require("../Config/db.sequelize.js");
 const { DataTypes } = require("sequelize");
 const { Model } = require("sequelize");
 const bcrypt = require("bcrypt");
-const emailjs = require("emailjs-com");
+const nodemailer = require("nodemailer");
 const generator = require("generate-password");
 
 class UserModel extends Model {}
@@ -105,19 +105,23 @@ const OTP = () => {
   return password;
 };
 const sendEmail = async (user_email, password) => {
-  const data = {
-    user_email,
-    password,
+  var transporter = nodemailer.createTransport({
+    host: "smtp-relay.sendinblue.com",
+    port: 587,
+    auth: {
+      user: "danielthomsen238@gmail.com",
+      pass: "pLUwjIW9D1BVmdz4",
+    },
+  });
+  const mailOptions = {
+    from: "danielthomsen238@gmail.com", // sender address
+    to: `${user_email}`, // list of receivers
+    subject: "Engangs kode til Admin-dashboard", // Subject line
+    html: `<p>Her er en engangs kode til Admin-dashboard.</p><p> Du kan kun logge ind en gang så husk at ændre din kode</p><p>${password}</p> `, // plain text body
   };
-  emailjs
-    .send(`service_ix4m3zi`, `template_64y4mcd`, data, `qgJ7Ycqdm2BsAqhH7`)
-    .then(
-      function (response) {
-        console.log("SUCCESS!", response.status, response.text);
-      },
-      function (error) {
-        console.log("FAILED...", error);
-      }
-    );
+  transporter.sendMail(mailOptions, function (err, info) {
+    if (err) console.log(err);
+    else console.log(info);
+  });
 };
 module.exports = UserModel;
