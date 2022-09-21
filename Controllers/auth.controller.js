@@ -21,7 +21,7 @@ class AuthController {
 
     if (username && password) {
       const data = await UserModel.findOne({
-        attributes: ["id", "password", "firstname"],
+        attributes: ["id", "firstname"],
         where: { email: username },
         include: [
           {
@@ -59,7 +59,7 @@ class AuthController {
     }
   };
 
-  protected = async (req, res) => {
+  resetPassword = async (req, res) => {
     res.sendStatus(200);
   };
 }
