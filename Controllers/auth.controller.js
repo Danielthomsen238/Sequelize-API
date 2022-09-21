@@ -78,7 +78,6 @@ class AuthController {
       uppercase: true,
       lowercase: true,
       strict: true,
-      exclude,
     });
     data.otp = password;
     const model = await UserModel.update(data, {
