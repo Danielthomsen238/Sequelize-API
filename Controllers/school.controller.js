@@ -42,7 +42,6 @@ class SchoolController {
       telefon,
       email,
       description,
-      user_id,
       category_id,
     } = req.body;
 
@@ -54,7 +53,6 @@ class SchoolController {
       telefon &&
       email &&
       description &&
-      user_id &&
       category_id
     ) {
       const model = await SchoolModel.update(req.body, {
