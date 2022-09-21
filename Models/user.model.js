@@ -33,6 +33,11 @@ UserModel.init(
       type: DataTypes.CHAR,
       allowNull: false,
     },
+    otp: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      defaultValue: null,
+    },
     active: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
