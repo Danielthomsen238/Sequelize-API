@@ -15,7 +15,7 @@ SchoolRouter.get("/school/:id[0-9]*", (req, res) => {
 SchoolRouter.post("/school", (req, res) => {
   controller.create(req, res);
 });
-SchoolRouter.put("/school)", verifyToken, (req, res) => {
+SchoolRouter.put("/school", verifyToken, (req, res) => {
   controller.update(req, res);
 });
 SchoolRouter.delete("/school/:id([0-9]*)", verifyToken, (req, res) => {
