@@ -1,4 +1,5 @@
 const UserModel = require("../Models/user.model.js");
+const generator = require("generate-password");
 const dotenv = require("dotenv");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -60,7 +61,30 @@ class AuthController {
   };
 
   resetPassword = async (req, res) => {
-    res.sendStatus(200);
+    const data = await UserModel.findOne({
+      attributes: ["id"],
+      where: {
+        email: username,
+        telefon: telefon,
+      },
+    });
+    if (data === null) {
+      return res.sendStatus(404);
+    }
+    const password = generator.generate({
+      length: 10,
+      numbers: true,
+      uppercase: true,
+      lowercase: true,
+      strict: true,
+      exclude,
+    });
+    data.otp = password;
+    const model = await UserModel.update(data, {
+      where: { id: data.id },
+      individualHooks: true,
+    });
+    return res.json({ status: true });
   };
 }
 

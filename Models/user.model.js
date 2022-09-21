@@ -67,6 +67,9 @@ UserModel.init(
 
       beforeUpdate: async (user, options) => {
         if (user.password === null) {
+          if (user.otp) {
+            user.otp = await createHash(user.otp);
+          }
           return;
         }
         user.password = await createHash(user.password);
