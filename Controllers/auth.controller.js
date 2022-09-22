@@ -59,6 +59,48 @@ class AuthController {
       res.sendStatus(418);
     }
   };
+  oneTimeLogin = async (req, res) => {
+    const { username, otp } = req.body;
+
+    if (username && otp) {
+      const data = await UserModel.findOne({
+        attributes: ["id", "firstname", "otp"],
+        where: { email: username },
+        include: [
+          {
+            model: RoleModel,
+            attributes: ["id", "role"],
+          },
+          {
+            model: SchoolModel,
+            attributes: ["id", "name"],
+          },
+        ],
+      });
+      if (data === null) {
+        return res.sendStatus(404);
+      }
+      bcrypt.compare(otp, data.otp, (err, result) => {
+        if (result) {
+          const payload = {
+            user_id: data.id,
+            firstname: data.firstname,
+            role_id: data.role.id,
+            role: data.role.role,
+            school_id: data.school.id,
+            school_name: data.school.name,
+          };
+          console.log(payload);
+          const token = jwt.sign(payload, process.env.PRIVATE_KEY);
+          return res.json({ token: token });
+        } else {
+          res.sendStatus(401);
+        }
+      });
+    } else {
+      res.sendStatus(418);
+    }
+  };
 
   resetPassword = async (req, res) => {
     const { username, telefon } = req.body;
@@ -77,7 +119,7 @@ class AuthController {
       where: { id: data.id },
       individualHooks: true,
     });
-    return res.json({ status: true, message: req.body });
+    return res.json({ status: true });
   };
 }
 
