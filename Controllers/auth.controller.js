@@ -47,6 +47,7 @@ class AuthController {
             role: data.role.role,
             school_id: data.school.id,
             school_name: data.school.name,
+            otp: false,
           };
           console.log(payload);
           const token = jwt.sign(payload, process.env.PRIVATE_KEY);
@@ -89,6 +90,7 @@ class AuthController {
             role: data.role.role,
             school_id: data.school.id,
             school_name: data.school.name,
+            otp: true,
           };
           console.log(payload);
           const token = jwt.sign(payload, process.env.PRIVATE_KEY);
