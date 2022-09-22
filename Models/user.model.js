@@ -104,7 +104,7 @@ const OTP = () => {
   });
   return password;
 };
-const sendEmail = async (user_email, password) => {
+const sendEmail = (user_email, password) => {
   var transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: process.env.SMTP_PORT,
