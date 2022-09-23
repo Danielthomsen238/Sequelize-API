@@ -48,6 +48,7 @@ class AuthController {
             school_id: data.school.id,
             school_name: data.school.name,
             otp: false,
+            active: data.active,
           };
           console.log(payload);
           const token = jwt.sign(payload, process.env.PRIVATE_KEY);
@@ -91,6 +92,7 @@ class AuthController {
             school_id: data.school.id,
             school_name: data.school.name,
             otp: true,
+            active: data.active,
           };
           console.log(payload);
           const token = jwt.sign(payload, process.env.PRIVATE_KEY);
