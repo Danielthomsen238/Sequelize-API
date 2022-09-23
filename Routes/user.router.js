@@ -21,5 +21,7 @@ UserRouter.put("/User", verifyToken, (req, res) => {
 UserRouter.delete("/User", verifyToken, (req, res) => {
   controller.delete(req, res);
 });
-
+UserRouter.put("/updatepass", verifyToken, (req, res) => {
+  controller.updatePassword(req, res);
+});
 module.exports = { UserRouter };
