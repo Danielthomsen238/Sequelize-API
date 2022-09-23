@@ -22,7 +22,7 @@ class AuthController {
 
     if (username && password) {
       const data = await UserModel.findOne({
-        attributes: ["id", "firstname", "password"],
+        attributes: ["id", "firstname", "password", "active"],
         where: { email: username },
         include: [
           {
@@ -39,6 +39,7 @@ class AuthController {
         return res.sendStatus(404);
       }
       bcrypt.compare(password, data.password, (err, result) => {
+        console.log(data);
         if (result) {
           const payload = {
             user_id: data.id,
