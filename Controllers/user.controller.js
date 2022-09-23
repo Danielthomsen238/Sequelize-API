@@ -78,7 +78,7 @@ class UserController {
   };
 
   updatePassword = async (req, res) => {
-    const { id, password, otp } = req.body;
+    const { id, password } = req.body;
     console.log(req.body);
     if (id && password) {
       const model = await UserModel.update(req.body, {
