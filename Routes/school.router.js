@@ -21,5 +21,5 @@ SchoolRouter.put("/school", verifyToken, (req, res) => {
 SchoolRouter.delete("/school", verifyToken, (req, res) => {
   controller.delete(req, res);
 });
-
+//
 module.exports = { SchoolRouter };
