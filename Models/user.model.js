@@ -104,7 +104,7 @@ const OTP = () => {
   });
   return password;
 };
-const sendEmail = (user_email, password) => {
+const sendEmail = async (user_email, password) => {
   var transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: process.env.SMTP_PORT,
@@ -113,15 +113,37 @@ const sendEmail = (user_email, password) => {
       pass: process.env.SMTP_PASSWORD,
     },
   });
+  await new Promise((resolve, reject) => {
+    // verify connection configuration
+    transporter.verify(function (error, success) {
+      if (error) {
+        console.log(error);
+        reject(error);
+      } else {
+        console.log("Server is ready to take our messages");
+        resolve(success);
+      }
+    });
+  });
+
   const mailOptions = {
     from: "danielthomsen238@gmail.com", // sender address
     to: `${user_email}`, // list of receivers
     subject: "Engangs kode til Admin-dashboard", // Subject line
     html: `<p>Her er en engangs kode til Admin-dashboard.</p><p> Du kan kun logge ind en gang så husk at ændre din kode.</p><p>${password}</p> `, // plain text body
   };
-  transporter.sendMail(mailOptions, function (err, info) {
-    if (err) console.log(err);
-    else console.log(info);
+
+  await new Promise((resolve, reject) => {
+    // send mail
+    transporter.sendMail(mailOptions, (err, info) => {
+      if (err) {
+        console.error(err);
+        reject(err);
+      } else {
+        console.log(info);
+        resolve(info);
+      }
+    });
   });
 };
 module.exports = UserModel;
