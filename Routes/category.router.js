@@ -18,10 +18,10 @@ CategoryRouter.post("/categoryId", (req, res) => {
 CategoryRouter.post("/category", verifyToken, (req, res) => {
   controller.create(req, res);
 });
-CategoryRouter.put("/category/:id([0-9]*)", verifyToken, (req, res) => {
+CategoryRouter.put("/category", verifyToken, (req, res) => {
   controller.update(req, res);
 });
-CategoryRouter.delete("/category/:id([0-9]*)", verifyToken, (req, res) => {
+CategoryRouter.delete("/category", verifyToken, (req, res) => {
   controller.delete(req, res);
 });
 
