@@ -51,7 +51,7 @@ class CourseController {
 
     if (name && description && duration && school_id && category_id) {
       const model = await CourseModel.update(req.body, {
-        where: { id: req.params.id },
+        where: { id: req.body.id },
         individualHooks: true,
       });
       return res.json({ status: true });
