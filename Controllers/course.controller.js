@@ -36,9 +36,9 @@ class CourseController {
   };
 
   create = async (req, res) => {
-    const { name, description, duration, school_id, category_id } = req.body;
+    const { name, description, duration, category_id } = req.body;
 
-    if (name && description && duration && school_id && category_id) {
+    if (name && description && duration && category_id) {
       const model = await CourseModel.create(req.body);
       return res.json({ newId: model.id });
     } else {
