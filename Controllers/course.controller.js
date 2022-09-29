@@ -47,6 +47,7 @@ class CourseController {
   };
   //
   update = async (req, res) => {
+    console.log(req.body);
     const { name, description, duration, school_id, category_id } = req.body;
 
     if (name && description && duration && school_id && category_id) {
