@@ -12,6 +12,9 @@ SchoolRouter.get("/school", (req, res) => {
 SchoolRouter.get("/school/:id[0-9]*", (req, res) => {
   controller.get(req, res);
 });
+SchoolRouter.get("/schoolId", (req, res) => {
+  controller.getID(req, res);
+});
 SchoolRouter.post("/school", (req, res) => {
   controller.create(req, res);
 });

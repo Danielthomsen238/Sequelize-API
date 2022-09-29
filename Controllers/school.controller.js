@@ -9,7 +9,13 @@ class SchoolController {
     const result = await SchoolModel.findAll();
     res.json(result);
   };
-
+  getId = async (req, res) => {
+    const result = await SchoolModel.findOne({
+      attributes: ["id"],
+      where: { name: req.headers.name },
+    });
+    res.json(result);
+  };
   get = async (req, res) => {
     const result = await SchoolModel.findOne({
       where: { id: req.params.id },
