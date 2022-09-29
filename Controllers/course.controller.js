@@ -64,7 +64,7 @@ class CourseController {
     try {
       await CourseModel.destroy({
         where: {
-          id: req.params.id,
+          id: req.body.id,
         },
       });
 

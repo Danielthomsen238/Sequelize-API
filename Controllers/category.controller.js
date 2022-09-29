@@ -42,7 +42,7 @@ class CategoryController {
 
     if (title) {
       const model = await CategoryModel.update(req.body, {
-        where: { id: req.params.id },
+        where: { id: req.body.id },
         individualHooks: true,
       });
       return res.json({ status: true });
@@ -55,7 +55,7 @@ class CategoryController {
     try {
       await CategoryModel.destroy({
         where: {
-          id: req.params.id,
+          id: req.body.id,
         },
       });
 
