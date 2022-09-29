@@ -13,7 +13,18 @@ class CourseController {
   }
 
   list = async (req, res) => {
-    const result = await CourseModel.findAll();
+    const result = await CourseModel.findAll({
+      include: [
+        {
+          model: CategoryModel,
+          attributes: ["id", "title"],
+        },
+        {
+          model: SchoolModel,
+          attributes: ["id", "name"],
+        },
+      ],
+    });
     res.json(result);
   };
 
