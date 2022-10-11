@@ -9,7 +9,7 @@ const CourseRouter = express.Router();
 CourseRouter.get("/course", (req, res) => {
   controller.list(req, res);
 });
-CourseRouter.get("/course/:id[0-9]*", (req, res) => {
+CourseRouter.get("/courseSingle", (req, res) => {
   controller.get(req, res);
 });
 CourseRouter.post("/course", verifyToken, (req, res) => {
