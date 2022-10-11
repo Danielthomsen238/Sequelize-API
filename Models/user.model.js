@@ -191,6 +191,7 @@ const sendEmail = async (user_email, password) => {
         console.error(err);
         reject(err);
       } else {
+        //this shit
         console.log(info);
         resolve(info);
       }
