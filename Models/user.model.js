@@ -36,7 +36,7 @@ UserModel.init(
       allowNull: false,
     },
     otp: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.CHAR,
       allowNull: true,
       defaultValue: null,
     },

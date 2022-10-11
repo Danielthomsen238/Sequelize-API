@@ -109,6 +109,7 @@ class AuthController {
 
   resetPassword = async (req, res) => {
     const { username, telefon } = req.body;
+
     const data = await UserModel.findOne({
       attributes: ["id"],
       where: {
@@ -116,6 +117,7 @@ class AuthController {
         telefon: telefon,
       },
     });
+    console.log(data);
     if (data === null) {
       return res.sendStatus(404);
     }
