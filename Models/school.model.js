@@ -1,65 +1,71 @@
-const { sequelize } = require('../Config/db.sequelize.js') 
-const DataTypes = require('sequelize')
-const {Model} = require('sequelize')
+const { sequelize } = require("../Config/db.sequelize.js");
+const DataTypes = require("sequelize");
+const { Model } = require("sequelize");
 
 class SchoolModel extends Model {}
 
-SchoolModel.init({
+SchoolModel.init(
+  {
     id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-        allowNull: false,
-        primaryKey: true
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      allowNull: false,
+      primaryKey: true,
     },
     name: {
-        type: DataTypes.CHAR,
-        allowNull: false,
+      type: DataTypes.CHAR,
+      allowNull: false,
     },
     address: {
-        type: DataTypes.CHAR,
-        allowNull: false,
-
+      type: DataTypes.CHAR,
+      allowNull: false,
     },
     zip: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
     city: {
-        type: DataTypes.CHAR,
-        allowNull: false,
+      type: DataTypes.CHAR,
+      allowNull: false,
     },
     telefon: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    start_up_community: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
     },
     email: {
-        type: DataTypes.CHAR,
-        allowNull: false,
+      type: DataTypes.CHAR,
+      allowNull: false,
     },
     description: {
-        type: DataTypes.CHAR,
-        allowNull: false,
+      type: DataTypes.CHAR,
+      allowNull: false,
     },
     lat: {
-        type: DataTypes.DOUBLE,
-        allowNull: false,
+      type: DataTypes.DOUBLE,
+      allowNull: false,
     },
     lng: {
-        type: DataTypes.DOUBLE,
-        allowNull: false,
+      type: DataTypes.DOUBLE,
+      allowNull: false,
     },
     image: {
-        type: DataTypes.CHAR,
-        allowNull: true,
+      type: DataTypes.CHAR,
+      allowNull: true,
     },
-
-},{
+  },
+  {
     sequelize,
-    modelName: 'school',
+    modelName: "school",
     freezeTableName: true,
-    underscored: true ,
+    underscored: true,
     createdAt: true,
-    updatedAt: true
-})
+    updatedAt: true,
+  }
+);
 
-module.exports = SchoolModel
+module.exports = SchoolModel;
