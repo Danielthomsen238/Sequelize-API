@@ -31,7 +31,7 @@ class AuthController {
           },
           {
             model: SchoolModel,
-            attributes: ["id", "name"],
+            attributes: ["id", "name", "hub"],
           },
         ],
       });
@@ -48,6 +48,7 @@ class AuthController {
             role: data.role.role,
             school_id: data.school.id,
             school_name: data.school.name,
+            hub: data.school.hub,
             otp: false,
             active: data.active,
           };
