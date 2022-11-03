@@ -21,7 +21,7 @@ class CourseController {
         },
         {
           model: SchoolModel,
-          attributes: ["id", "name"],
+          attributes: ["id", "name", "image"],
         },
       ],
     });
