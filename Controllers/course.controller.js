@@ -45,7 +45,7 @@ class CourseController {
       res.send(418);
     }
   };
-  //
+
   update = async (req, res) => {
     console.log(req.body);
     const { name, description, duration, category_id } = req.body;
