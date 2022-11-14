@@ -31,6 +31,16 @@ class CourseController {
   get = async (req, res) => {
     const result = await CourseModel.findOne({
       where: { id: req.params.id },
+      include: [
+        {
+          model: CategoryModel,
+          attributes: ["id", "title"],
+        },
+        {
+          model: SchoolModel,
+          attributes: ["id", "name", "image"],
+        },
+      ],
     });
     res.json(result);
   };
