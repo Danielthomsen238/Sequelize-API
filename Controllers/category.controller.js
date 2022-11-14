@@ -25,7 +25,7 @@ class CategoryController {
     });
     res.json(result);
   };
-  //
+
   create = async (req, res) => {
     const { title } = req.body;
 
