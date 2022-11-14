@@ -30,7 +30,7 @@ class CourseController {
 
   get = async (req, res) => {
     const result = await CourseModel.findOne({
-      where: { name: req.body.name },
+      where: { id: req.params.id },
     });
     res.json(result);
   };
