@@ -16,7 +16,7 @@ class RoleController {
     });
     res.json(result);
   };
-  //
+
   create = async (req, res) => {
     const { role } = req.body;
 
