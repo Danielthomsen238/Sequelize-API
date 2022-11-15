@@ -17,7 +17,7 @@ CoursesModel.init(
       allowNull: false,
     },
     description: {
-      type: DataTypes.CHAR,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     duration: {

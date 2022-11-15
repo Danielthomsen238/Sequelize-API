@@ -32,11 +32,11 @@ UserModel.init(
       allowNull: false,
     },
     password: {
-      type: DataTypes.CHAR,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     otp: {
-      type: DataTypes.CHAR,
+      type: DataTypes.TEXT,
       allowNull: true,
       defaultValue: null,
     },
