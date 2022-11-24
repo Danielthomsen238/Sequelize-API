@@ -18,14 +18,9 @@ class SchoolController {
   };
 
   create = async (req, res) => {
-    const { name, address, zip, city, telefon, email, description, lat, lng } =
-      req.body;
+    const { name, address, zip, city, telefon, email, lat, lng } = req.body;
 
-    if (
-      (name && address && zip && city,
-      telefon,
-      email && description && lat && lng)
-    ) {
+    if ((name && address && zip && city, telefon, email && lat && lng)) {
       const model = await SchoolModel.create(req.body);
       return res.json({ newId: model.id });
     } else {
