@@ -49,6 +49,7 @@ SchoolModel.init(
     description: {
       type: DataTypes.TEXT,
       allowNull: true,
+      defaultValue: null,
     },
     lat: {
       type: DataTypes.DOUBLE,
