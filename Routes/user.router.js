@@ -6,19 +6,19 @@ const controller = new UserController();
 
 const UserRouter = express.Router();
 
-UserRouter.get("/User", verifyToken, (req, res) => {
+UserRouter.get("/user", verifyToken, (req, res) => {
   controller.list(req, res);
 });
-UserRouter.get("/User/:id[0-9]*", verifyToken, (req, res) => {
+UserRouter.get("/user/:id([0-9]*)", verifyToken, (req, res) => {
   controller.get(req, res);
 });
-UserRouter.post("/User", (req, res) => {
+UserRouter.post("/user", (req, res) => {
   controller.create(req, res);
 });
-UserRouter.put("/User", verifyToken, (req, res) => {
+UserRouter.put("/user", verifyToken, (req, res) => {
   controller.update(req, res);
 });
-UserRouter.delete("/User", verifyToken, (req, res) => {
+UserRouter.delete("/user", verifyToken, (req, res) => {
   controller.delete(req, res);
 });
 UserRouter.put("/updatepass", verifyToken, (req, res) => {
