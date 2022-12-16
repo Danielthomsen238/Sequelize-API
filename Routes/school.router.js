@@ -9,7 +9,7 @@ const SchoolRouter = express.Router();
 SchoolRouter.get("/school", (req, res) => {
   controller.list(req, res);
 });
-SchoolRouter.get("/school/:id[0-9]*", (req, res) => {
+SchoolRouter.get("/school/:id[0-9]*)", (req, res) => {
   controller.get(req, res);
 });
 
