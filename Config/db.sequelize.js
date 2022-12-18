@@ -10,12 +10,9 @@ const sequelize = new Sequelize(
   {
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
-    ssl: {
-      minVersion: "TLSv1.2",
-      rejectUnauthorized: true,
-    },
     dialect: "mysql",
-    dialectModule: require("mysql2"),
+    // dialectModule: require("mysql2"),
+    // ssl: true,
   }
 );
 //
