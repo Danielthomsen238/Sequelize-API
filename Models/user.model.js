@@ -83,6 +83,7 @@ UserModel.init(
         }
 
         if (user._previousDataValues.otp === true) {
+          console.log("hello");
           user.password = await createHash(user.password);
         }
         if (user.password === null) {
