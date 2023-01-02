@@ -68,6 +68,7 @@ UserModel.init(
       },
 
       beforeUpdate: async (user, options) => {
+        console.log(user);
         if (
           user._previousDataValues.active === false &&
           user.dataValues.active === true
@@ -79,8 +80,11 @@ UserModel.init(
           const generatePassword = OTP();
           sendEmail(user.email, generatePassword);
           user.otp = await createHash(generatePassword);
-          user.password = await createHash(user.password);
           return;
+        }
+
+        if (user._previousDataValues.otp === true) {
+          user.password = await createHash(user.password);
         }
         if (user.password === null) {
           return;
