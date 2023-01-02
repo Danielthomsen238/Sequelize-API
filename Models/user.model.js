@@ -80,7 +80,6 @@ UserModel.init(
           const generatePassword = OTP();
           sendEmail(user.email, generatePassword);
           user.otp = await createHash(generatePassword);
-          return;
         }
 
         if (user._previousDataValues.otp === true) {
