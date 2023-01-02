@@ -30,7 +30,7 @@ class SchoolController {
 
   update = async (req, res) => {
     const { name, address, zip, city, telefon, email, description } = req.body;
-
+    console.log(req.body);
     if (name && address && zip && city && telefon && email && description) {
       const model = await SchoolModel.update(req.body, {
         where: { id: req.body.id },
@@ -38,7 +38,7 @@ class SchoolController {
       });
       return res.json({ status: true });
     } else {
-      res.send(418);
+      res.sendStatus(418);
     }
   };
 

@@ -11,9 +11,7 @@ const sequelize = new Sequelize(
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
     dialect: "mysql",
-    // dialectModule: require("mysql2"),
-    // ssl: true,
   }
 );
-//
+
 module.exports = { sequelize };

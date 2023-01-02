@@ -84,7 +84,6 @@ UserModel.init(
         if (user.password === null) {
           return;
         }
-        user.password = await createHash(user.password);
       },
     },
   }
